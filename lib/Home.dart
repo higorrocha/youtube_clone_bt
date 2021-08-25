@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_clone_bt/CustomSearchDelegate.dart';
 import 'package:youtube_clone_bt/screens/HomeScreen.dart';
 import 'package:youtube_clone_bt/screens/Library.dart';
 import 'package:youtube_clone_bt/screens/Subscriptions.dart';
@@ -37,18 +38,14 @@ class _HomeState extends State<Home> {
             height: 22,
         ),
         actions: [
+
           IconButton(
-              onPressed: (){},
-              icon: Icon(Icons.videocam)
-          ),
-          IconButton(
-              onPressed: (){},
+              onPressed: () async {
+                String? res = await showSearch(context: context, delegate: CustomSearchDelegate());
+              },
               icon: Icon(Icons.search)
-          ),
-          IconButton(
-              onPressed: (){},
-              icon: Icon(Icons.account_circle)
           )
+
         ],
       ),
       body: Container(
