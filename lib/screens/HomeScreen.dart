@@ -3,7 +3,10 @@ import 'package:youtube_clone_bt/Api.dart';
 import 'package:youtube_clone_bt/model/Video.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  //const HomeScreen({Key? key}) : super(key: key);
+
+  String search;
+  HomeScreen(this.search);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -11,16 +14,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  _listVideos(){
+  _listVideos(String search){
     Api api = Api();
-    return api.searchs("");
+    return api.searchs(search);
   }
 
   @override
   Widget build(BuildContext context) {
 
     return FutureBuilder<List<Video>>(
-      future: _listVideos(),
+      future: _listVideos(widget.search),
       builder: (context, snapshot){
         switch( snapshot.connectionState ){
           case ConnectionState.none :
